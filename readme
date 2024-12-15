@@ -6,3 +6,5 @@ top songs (topx, defualt 5)
 let user choose between all songs, between top 10, inside album
 
 also add something that just showcaeses top 10, then also that just showcases all albums (or topx albums)
+
+want toi be able to hover over song names then song plays or song cover shown, then can click to play
