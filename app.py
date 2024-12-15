@@ -1,9 +1,8 @@
 import os
 from dotenv import load_dotenv
-from requests import get
 from spotipy import Spotify
 from spotipy.oauth2 import SpotifyClientCredentials
-from flask import Flask, request, render_template
+from flask import Flask, redirect, request, render_template, url_for
 
 # Load environment variables
 load_dotenv()
@@ -15,7 +14,7 @@ sp = Spotify(auth_manager=SpotifyClientCredentials(client_id=client_id, client_s
 
 
 #setup for flask
-app = Flask(__name__)
+app = Flask(__name__, template_folder="pages")
 
 
 
@@ -43,13 +42,18 @@ def home():
     
     if request.method == "POST":
         artist_name = request.form.get("artist_name")
+        
         top_choice = int(request.form.get("top_choice"))
         
         artist = search_for_artist(artist_name)
         
         if artist:
+            artist_name = artist["name"] #sets name to actual name from spotify so typos dont get added to the screen
             songs = get_songs_by_artist(artist["id"], top_choice)
         else:
             error_message = "Artist Not Found :/"
-            
-    return render_template("/pages/index.html", songs=songs, artist_name=artist_name, error_message=error_message)
+    return render_template("index.html", songs=songs, artist_name=artist_name, error_message=error_message)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

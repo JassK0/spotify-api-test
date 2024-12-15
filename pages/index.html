@@ -5,11 +5,45 @@
     <meta name=" idk yet" content="Spotify Top Songs">
 
     <!-- linking the style.css sheet-->
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
     <header>
-        <h1>Spotify App 1</h1>
+        {% if artist_name %}
+        <h1>{{ artist_name }}'s Top Songs</h1>
+    {% else %}
+        <h1>Spotify Top Songs Finder</h1>
+    {% endif %}  
     </header>
+    <form method="POST" action="/">
+        <label for="artist_name">Enter Artist Name:</label>
+        <input type="text" id="artist_name" name="artist_name" placeholder="e.g., Drake" required>
+        
+        <label for="top_choice">How many top songs?</label>
+        <input type="number" id="top_choice" name="top_choice" min="1" max="10" placeholder="e.g., 5" required>
+        
+        <button type="submit">Search</button>
+    </form>
+
+
+  
+
+    <!-- Error message -->
+    {% if error_message %}
+        <p class="error">{{ error_message }}</p>
+    {% endif %}
+
+    <!-- Display top songs -->
+    {% if songs %}
+        <h2>Top Songs for {{ artist_name }}</h2>
+        <ol>
+            {% for song in songs %}
+                <li>{{ song.name }}</li>
+            {% endfor %}
+        </ol>
+    {% endif %}
+    
+    
 </body>
+</html>
