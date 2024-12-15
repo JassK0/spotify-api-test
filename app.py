@@ -1,4 +1,5 @@
 import os
+from tkinter import NO
 from dotenv import load_dotenv
 from spotipy import Spotify
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -37,6 +38,7 @@ def home():
     
     songs = []
     artist_name = ""
+    top_choice = None
     error_message = ""
     
     
@@ -52,7 +54,7 @@ def home():
             songs = get_songs_by_artist(artist["id"], top_choice)
         else:
             error_message = "Artist Not Found :/"
-    return render_template("index.html", songs=songs, artist_name=artist_name, error_message=error_message)
+    return render_template("index.html", songs=songs, artist_name=artist_name, top_choice=top_choice, error_message=error_message)
 
 
 if __name__ == "__main__":

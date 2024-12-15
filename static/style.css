@@ -1,3 +1,127 @@
-header h1 {
-    color: rgb(0, 0, 0);
+@font-face {
+    font-family: 'Gotham';
+    src: url('../fonts/GothamBook.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('../fonts/GothamBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('../fonts/GothamBookItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('../fonts/Gotham-Black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+
+
+
+
+
+
+
+
+header  {
+    background-color:#1ED760;
+    width: 1100px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+h1 {
+    font-family: 'Gotham', sans-serif;
+    
+}
+
+body {
+    font-family: 'Gotham', sans-serif;
+    font-weight: normal; /* Default to Gotham Book */
+    color: #ffffff; /* Example: Spotify dark theme */
+    background-color: #121212;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    background-color: #1ED760;
+    border-radius: 0px 0px 10px 10px;
+    height: 400px;
+    width: 700px;
+    margin: 0 auto;
+    align-items: center; /* Center content horizontally */
+    text-align: center;
+    
+}
+
+form{
+    display: flex;
+    flex-direction: column; /*makes the forms labels top and bottom*/
+    
+}
+
+label{
+    font-family: 'Gotham', sans-serif;
+    font-size: 20px;
+    
+}
+
+#artist_name {
+    margin-bottom: 10px;
+}
+
+
+
+input{
+    padding: 8px;
+    border-radius: 5px;
+    width: 200px;
+    border: none;
+    
+}
+
+button{
+    padding: 6px;
+    border-radius: 5px;
+    transition: 0.8s;
+    cursor: pointer;
+    border: none;
+    color: grey;
+    margin-top: 10px;
+    
+}
+
+button:hover{
+    background-color: #15b300;
+    color: white;
+}
+
+
+ol {
+    text-align: left; /* Align songs list to the left */
+    font-size: 20px;
+    color: white;
+}
+
+
+
+
+
+
+
+

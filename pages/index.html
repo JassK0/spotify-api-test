@@ -5,17 +5,20 @@
     <meta name=" idk yet" content="Spotify Top Songs">
 
     <!-- linking the style.css sheet-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
     <header>
-        {% if artist_name %}
-        <h1>{{ artist_name }}'s Top Songs</h1>
+        {% if artist_name and top_choice %}
+        <h1>{{ artist_name }}'s Top {{ top_choice }} Songs</h1>
     {% else %}
         <h1>Spotify Top Songs Finder</h1>
     {% endif %}  
     </header>
+    <div class="form-container">
     <form method="POST" action="/">
         <label for="artist_name">Enter Artist Name:</label>
         <input type="text" id="artist_name" name="artist_name" placeholder="e.g., Drake" required>
@@ -26,24 +29,22 @@
         <button type="submit">Search</button>
     </form>
 
-
-  
-
-    <!-- Error message -->
-    {% if error_message %}
+        <!-- Error message -->
+        {% if error_message %}
         <p class="error">{{ error_message }}</p>
     {% endif %}
 
     <!-- Display top songs -->
     {% if songs %}
-        <h2>Top Songs for {{ artist_name }}</h2>
         <ol>
             {% for song in songs %}
                 <li>{{ song.name }}</li>
             {% endfor %}
         </ol>
     {% endif %}
-    
+    </div>
+
+
     
 </body>
 </html>
