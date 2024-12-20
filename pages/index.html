@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <div class="header-container">
     <header>
         {% if artist_name and top_choice %}
         <h1>{{ artist_name }}'s Top {{ top_choice }} Songs</h1>
@@ -18,6 +19,7 @@
         <h1>Spotify Top Songs Finder</h1>
     {% endif %}  
     </header>
+    </div>
     <div class="form-container">
     <form method="POST" action="/">
         <label for="artist_name">Enter Artist Name:</label>
@@ -27,8 +29,13 @@
         <input type="number" id="top_choice" name="top_choice" min="1" max="10" placeholder="e.g., 5" required>
         
         <button type="submit">Search</button>
+
+        
     </form>
 
+    </div>
+
+    <div class="output">
         <!-- Error message -->
         {% if error_message %}
         <p class="error">{{ error_message }}</p>
@@ -43,8 +50,6 @@
         </ol>
     {% endif %}
     </div>
-
-
     
 </body>
 </html>
