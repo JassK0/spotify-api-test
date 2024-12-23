@@ -31,7 +31,19 @@ def search_for_artist(artist_name):
 # Get top songs for an artist
 def get_songs_by_artist(artist_id, top_choice):
     results = sp.artist_top_tracks(artist_id, country="US")
-    return results["tracks"][:top_choice]
+    tracks = results["tracks"][:top_choice]
+    
+    songs = []
+    for track in tracks:
+        full_song_url = track["external_urls"]["spotify"]  # Get the full song link
+
+        song_data = {
+            "name": track["name"],  # Song name
+            "album_art": track["album"]["images"][0]["url"] if track["album"]["images"] else None,  # Album art URL
+            "full_song_url": full_song_url,  # Full song URL
+        }
+        songs.append(song_data)
+    return songs
 
 @app.route("/", methods=["GET", "POST"])
 def home():

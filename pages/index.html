@@ -36,20 +36,28 @@
     </div>
 
     <div class="output">
-        <!-- Error message -->
-        {% if error_message %}
+    <!-- Error message -->
+    {% if error_message %}
         <p class="error">{{ error_message }}</p>
     {% endif %}
 
     <!-- Display top songs -->
     {% if songs %}
         <ol>
+            <div class="album-grid"></div>
             {% for song in songs %}
-                <li>{{ song.name }}</li>
+            
+                <li>
+                    <img src="{{ song.album_art }}" alt="{{ song.name }}" style="width: 200px; height: auto;">
+                    {{ song.name }}
+                    {% if song.preview_url %}
+                        <a href="{{ song.full_song_url }}" target="_blank" style="display: inline-block; margin-left: 10px; text-decoration: underline; color: blue;">Preview</a>
+                    {% endif %}
+                </li>
             {% endfor %}
         </ol>
     {% endif %}
-    </div>
+</div>
     
 </body>
 </html>

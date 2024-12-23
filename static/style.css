@@ -40,7 +40,7 @@
     height: 102px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     padding-left: 24px;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4);
 
@@ -146,10 +146,15 @@ button:hover{
     color: rgb(255, 255, 255);
 }
 
+.output a {
+    outline: 2px solid red; /* Shows the link area */
+}
 
-
-
-
+.output a {
+    pointer-events: auto;
+    z-index: 1;
+    display: inline-block;
+}
 
 
 
