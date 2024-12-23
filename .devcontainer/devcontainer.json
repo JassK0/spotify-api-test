@@ -1,0 +1,11 @@
+{
+    "name": "My Codespace",
+    "postCreateCommand": "echo -e 'CLIENT_ID=${{ secrets.CLIENT_ID }}\nCLIENT_SECRET=${{ secrets.CLIENT_SECRET }}' > .env",
+    "customizations": {
+      "vscode": {
+        "settings": {},
+        "extensions": []
+      }
+    }
+  }
+  
