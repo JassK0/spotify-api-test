@@ -1,0 +1,40 @@
+I should learn docker next time lol
+
+
+
+
+
+Best Practices for Using venv
+Create and Activate Early:
+
+Create the virtual environment as soon as you start a new project.
+Use a consistent naming convention like venv.
+bash
+Copy code
+python3 -m venv venv
+source venv/bin/activate
+Use a requirements.txt File:
+
+Document all dependencies by generating a requirements.txt file:
+bash
+Copy code
+
+
+pip freeze > requirements.txt
+
+
+Team members can install the same dependencies using:
+bash
+Copy code
+pip install -r requirements.txt
+Version Control:
+
+Add the venv directory to your .gitignore file to avoid committing it:
+Copy code
+venv/
+Upgrade Tools:
+
+Always keep pip, setuptools, and wheel up to date:
+bash
+Copy code
+pip install --upgrade pip setuptools wheel

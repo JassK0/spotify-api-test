@@ -1,5 +1,4 @@
 import os
-from tkinter import NO
 from dotenv import load_dotenv
 from spotipy import Spotify
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -11,12 +10,12 @@ client_id = os.getenv("CLIENT_ID")
 client_secret = os.getenv("CLIENT_SECRET")
 
 # Set up Spotipy with client credentials
-sp = Spotify(auth_manager=SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
+sp = Spotify(auth_manager=SpotifyClientCredentials(
+    client_id=client_id, client_secret=client_secret))
 
 
-#setup for flask
+# setup for flask
 app = Flask(__name__, template_folder="pages")
-
 
 
 # Search for an artist
@@ -29,40 +28,45 @@ def search_for_artist(artist_name):
     return items[0]
 
 # Get top songs for an artist
+
+
 def get_songs_by_artist(artist_id, top_choice):
     results = sp.artist_top_tracks(artist_id, country="US")
     tracks = results["tracks"][:top_choice]
-    
+
     songs = []
     for track in tracks:
-        full_song_url = track["external_urls"]["spotify"]  # Get the full song link
+        # Get the full song link
+        full_song_url = track["external_urls"]["spotify"]
 
         song_data = {
             "name": track["name"],  # Song name
-            "album_art": track["album"]["images"][0]["url"] if track["album"]["images"] else None,  # Album art URL
+            # Album art URL
+            "album_art": track["album"]["images"][0]["url"] if track["album"]["images"] else None,
             "full_song_url": full_song_url,  # Full song URL
         }
         songs.append(song_data)
     return songs
 
+
 @app.route("/", methods=["GET", "POST"])
 def home():
-    
+
     songs = []
     artist_name = ""
     top_choice = None
     error_message = ""
-    
-    
+
     if request.method == "POST":
         artist_name = request.form.get("artist_name")
-        
+
         top_choice = int(request.form.get("top_choice"))
-        
+
         artist = search_for_artist(artist_name)
-        
+
         if artist:
-            artist_name = artist["name"] #sets name to actual name from spotify so typos dont get added to the screen
+            # sets name to actual name from spotify so typos dont get added to the screen
+            artist_name = artist["name"]
             songs = get_songs_by_artist(artist["id"], top_choice)
         else:
             error_message = "Artist Not Found :/"
@@ -70,4 +74,4 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=8000, debug=True)

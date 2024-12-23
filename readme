@@ -1,3 +1,17 @@
+Use requirments.txt to setup you Environment: ----> pip install -r requirtments.txt
+
+once I am finished and satisfied  i will add  blurb about what this project acheived.
+For now here are some notes for myslef i occasionally added:
+
+
+
+
+
+
+
+
+
+Occasional notes:
 so far this is just asking use for artist name then prints the top 10 songs
 most of code is copied off Akamai Developer yt channel. How to use spotify api tutorial
 
@@ -8,3 +22,13 @@ let user choose between all songs, between top 10, inside album
 also add something that just showcaeses top 10, then also that just showcases all albums (or topx albums)
 
 want toi be able to hover over song names then song plays or song cover shown, then can click to play
+
+
+
+
+
+dec 23 1250am: Some notes for the future as i go: here I used shell scripts for installing the dependancies. For example
+one script containing the CLAS and another to execute that script. But next time I should use a requirments.txt
+or even learn how to use docker, i might even switch this to one of those implementations.
+
+had to change the port to 8000 because my macbook uses the basic 5000 and 5001 for something
